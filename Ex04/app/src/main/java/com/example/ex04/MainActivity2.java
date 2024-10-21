@@ -15,52 +15,50 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.text.DecimalFormat;
 
-public class MainActivity2 extends Activity {
-    Button btnChandoan;
-    EditText editTen,editChieucao,editCannang,editBMI,editChandoan;
+public class MainActivity2 extends AppCompatActivity {
+    Button btnChuanDoan;
+    EditText edtten, edtchieucao, edtcannang, edtBMI, edtChuanDoan;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        btnChandoan= findViewById(R.id.btnBMI);
-        editTen=findViewById(R.id.edtten);
-        editChieucao= findViewById(R.id.edtchieucao);
-        editCannang= findViewById(R.id.edtcannang);
-        editBMI= findViewById(R.id.edtBMI);
-        editChandoan= findViewById(R.id.edtChuanDoan);
-        btnChandoan.setOnClickListener(new View.OnClickListener() {
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main2);
+        btnChuanDoan = findViewById(R.id.btnBMI);
+        edtten = findViewById(R.id.edtten);
+        edtchieucao = findViewById(R.id.edtchieucao);
+        edtcannang = findViewById(R.id.edtcannang);
+        edtBMI = findViewById(R.id.edtBMI);
+        edtChuanDoan = findViewById(R.id.edtChuanDoan);
+        btnChuanDoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-// TODO Auto-generated method stub
-                double H=Double.parseDouble(editChieucao.getText()+"");
-                double W=Double.parseDouble(editCannang.getText()+"");
-                double BMI=W/Math.pow(H,2);
+                double H = Double.parseDouble(edtchieucao.getText()+ "");
+                double W = Double.parseDouble(edtcannang.getText()+ "");
+                double BMI = W / Math.pow(H, 2);
                 String chandoan="";
-                if(BMI<18)
+                if(BMI < 18.5){
+                    chandoan = "Gay";
+                }else if(BMI < 24.9){
+                    chandoan = "Binh thuong";
+                }else if(BMI < 29.9){
+                    chandoan = "Ban beo phi cap do 1";
+                }else if(BMI < 34.9){
+                    chandoan = "Ban beo phi cap do 2";
+                }else
                 {
-                    chandoan="Bạn gầy";
+                    chandoan = "Ban beo phi cap do 3";
                 }
-                else if(BMI<=24.9)
-                {
-                    chandoan="Bạn bình thường";
-                }
-                else if(BMI<=29.9)
-                {
-                    chandoan="Bạn béo phì độ 1";
-                }
-                else if(BMI<=34.9)
-                {
-                    chandoan="Bạn béo phì độ 2";
-                }
-                else
-                {
-                    chandoan="Bạn béo phì độ 3";
-                }
-                DecimalFormat dcf=new DecimalFormat("#.0");
-                editBMI.setText(dcf.format(BMI));
-                editChandoan.setText(chandoan);
+                DecimalFormat dcf = new DecimalFormat("#.0");
+                edtBMI.setText(dcf.format(BMI));
+                edtChuanDoan.setText(chandoan);
             }
+        });
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
         });
     }
 }
