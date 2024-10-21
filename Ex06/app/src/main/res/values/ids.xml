@@ -2,4 +2,5 @@
 <resources>
     <item name="main" type="id" />
     <item name="rg_bang" type="id" />
+    <item name="rg_bangcap" type="id" />
 </resources>

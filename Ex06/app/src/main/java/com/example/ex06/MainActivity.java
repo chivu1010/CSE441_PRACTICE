@@ -16,125 +16,112 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
+
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-    EditText edtten,editCMND,editBosung;
-    CheckBox chkdocbao,chkdocsach,chkdoccode;
-    Button btnsend;
-    RadioGroup rg_bang;
+    EditText edt_hoten, edt_cmnd, edt_bosung;
+    RadioGroup rg_bangcap;
+    RadioButton rb_daihoc, rb_caodang, rb_trungcap;
+    CheckBox cb_docbao, cb_docsach, cb_doccoding;
+    Button btn_guitt;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        edtten = findViewById(R.id.editHoten);
-        editCMND = findViewById(R.id.editCMND);
-        editBosung = findViewById(R.id.editBosung);
-        chkdocbao = findViewById(R.id.chkdocbao);
-        chkdoccode = findViewById(R.id.chkdoccoding);
-        chkdocsach = findViewById(R.id.chkdocsach);
-        btnsend = findViewById(R.id.btnGuiTT);
-        btnsend.setOnClickListener(new View.OnClickListener() {
+        edt_hoten = findViewById(R.id.editHoten);
+        edt_cmnd = findViewById(R.id.editCMND);
+        edt_bosung = findViewById(R.id.editBosung);
+        cb_docbao = findViewById(R.id.chkdocbao);
+        cb_docsach = findViewById(R.id.chkdocsach);
+        cb_doccoding = findViewById(R.id.chkdoccoding);
+        btn_guitt = findViewById(R.id.btnGuiTT);
+        btn_guitt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-// TODO Auto-generated method stub
                 doShowInformation();
             }
         });
-        
+
+
     }
-    public void doShowInformation()
-    {
-//Kiểm tra tên hợp lệ
-        String ten=edtten.getText().toString();
-        ten=ten.trim();
-        if(ten.length()<3)
-        {
-            edtten.requestFocus();
-            edtten.selectAll();
-            Toast.makeText(this, "Tên phải >= 3 ký tự",
-                    Toast.LENGTH_LONG).show();
+    public void doShowInformation() {
+        String ten = edt_hoten.getText().toString();
+        ten = ten.trim();
+        if(ten.length() < 3) {
+            edt_hoten.requestFocus();
+            edt_hoten.selectAll();
+            Toast.makeText(this, "Ten phai >= 3 ky tu", Toast.LENGTH_SHORT).show();
             return;
         }
-//kiểm tra CMND hợp lệ
-        String cmnd=editCMND.getText().toString();
-        cmnd=cmnd.trim();
-        if(cmnd.length()!=9)
-        {
-            editCMND.requestFocus();
-            editCMND.selectAll();
-            Toast.makeText(this, "CMND phải đúng 9 ký tự",
-                    Toast.LENGTH_LONG).show();
+        String cmnd = edt_cmnd.getText().toString();
+        cmnd = cmnd.trim();
+        if(cmnd.length() != 9) {
+            edt_cmnd.requestFocus();
+            edt_cmnd.selectAll();
+            Toast.makeText(this, "CMND phai co 9 ky tu", Toast.LENGTH_SHORT).show();
             return;
         }
-//Kiểm tra bằng cấp
-        String bang="";
-        rg_bang = findViewById(R.id.rg_bang);
-        int id=rg_bang.getCheckedRadioButtonId();// Trả về Id
-        if(id==-1)
+        String bangcap = "";
+        rg_bangcap = findViewById(R.id.rg_bangcap);
+        int id = rg_bangcap.getCheckedRadioButtonId();
+        if(id == -1)
         {
-            Toast.makeText(this, "Phải chọn bằng cấp",
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Phai chon bang cap", Toast.LENGTH_SHORT).show();
             return;
         }
-        RadioButton rad= findViewById(id);
-        bang=rad.getText()+"";
-//Kiểm tra sở thích
-        String sothich="";
-        if(chkdocbao.isChecked())
-            sothich+=chkdocbao.getText()+"\n";
-        if(chkdocsach.isChecked())
-            sothich+=chkdocsach.getText()+"\n";
-        if(chkdoccode.isChecked())
-            sothich+=chkdoccode.getText()+"\n";
-        String bosung=editBosung.getText()+"";
-//Tạo Dialpg
-        AlertDialog.Builder builder=new AlertDialog.Builder(this);
-        builder.setTitle("Thông tin cá nhân");
-        builder.setPositiveButton("Đóng", new
-                DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-// TODO Auto-generated method stub
-                        dialog.cancel();
-                    }
-                });
-//tạo nội dung
-        String msg=ten+"\n";
-        msg+= cmnd+"\n";
-        msg+=bang+"\n";
-        msg+=sothich;
-        msg+="—————————–\n";
-        msg+="Thông tin bổ sung:\n";
-        msg+=bosung+ "\n";
-        msg+="—————————–";
-        builder.setMessage(msg);//thiết lập nội dung
-        builder.create().show();//hiển thị Dialog
+        RadioButton rb = findViewById(id);
+        bangcap = rb.getText() + "";
+        String sothich = "";
+        if(cb_docbao.isChecked())
+            sothich += cb_docbao.getText()+"\n";
+        if(cb_docsach.isChecked())
+            sothich += cb_docsach.getText()+"\n";
+        if(cb_doccoding.isChecked())
+            sothich += cb_doccoding.getText()+"\n";
+        String bosung = edt_bosung.getText() + "";
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Thong tin ca nhan");
+        builder.setPositiveButton("Dong", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        String msg = ten + "\n";
+        msg += cmnd + "\n";
+        msg += bangcap + "\n";
+        msg += sothich;
+        msg += "\n";
+        msg += "Thong tin bo sung: \n";
+        msg += bosung+"\n";
+        msg += "--------";
+        builder.setMessage(msg);
+        builder.create().show();
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        AlertDialog.Builder b =new
-                AlertDialog.Builder(MainActivity.this);
+        AlertDialog.Builder b = new AlertDialog.Builder(MainActivity.this);
         b.setTitle("Question");
         b.setMessage("Are you sure you want to exit?");
-        //b.setIcon(R.drawable.inform);
-        b.setPositiveButton("Yes", new DialogInterface.
-                OnClickListener() {
+        b.setIcon(R.drawable.baseline_warning_24);
+        b.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
+            public void onClick(DialogInterface dialog, int which) {
                 finish();
-            }});
-        b.setNegativeButton("No", new
-                DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which)
-                    {
-                        dialog.cancel();
-                    }
-                });
+            }
+        });
+        b.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
         b.create().show();
     }
 }
