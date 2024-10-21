@@ -60,7 +60,22 @@ public class MainActivity2 extends AppCompatActivity {
                         ketqua = "Phuong trinh co mot nghiem x = " + dcf.format(-c/b);
                     }
                 }
-                
+                else
+                {
+                    double delta = b*b - 4*a*c;
+                    if(delta<0)
+                    {
+                        ketqua = "Phuong trinh vo nghiem";
+                    }
+                    else if(delta==0)
+                    {
+                        ketqua = "Phuong trinh co nghiem kep x1=x2= " + dcf.format(-b/(2*a));
+                    }
+                    else
+                    {
+                        ketqua = "Phuong trinh co 2 nghiem phan biet x1= " + dcf.format((-b+Math.sqrt(delta))/(2*a)) + "x2= " + dcf.format((-b-Math.sqrt(delta))/(2*a));
+                    }
+                }
                 tvketqua.setText(ketqua);
             }
         });
