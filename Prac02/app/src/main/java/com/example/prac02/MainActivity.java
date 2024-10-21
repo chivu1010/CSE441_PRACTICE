@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Tham chiếu tới các thành phần giao diện
+        // Tham chiếu tới các thành phần của giao diện
         resultTextView = findViewById(R.id.resultTextView);
         staffIdEditText = findViewById(R.id.staffIdEditText);
         fullNameEditText = findViewById(R.id.fullNameEditText);

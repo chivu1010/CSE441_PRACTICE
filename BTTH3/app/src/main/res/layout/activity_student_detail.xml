@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvDetailName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Student Name"
+        android:textSize="24sp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDetailId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Student ID"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetailName"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDetailEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email: example@example.com"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetailId"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDetailMajor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Major: CNTT"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetailEmail"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDetailAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address: Nghệ An"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetailMajor"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDetailGpa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GPA: 3.25"
+        android:textSize="18sp"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetailAddress"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
