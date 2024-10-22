@@ -6,49 +6,56 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-    ImageButton btnplay, btnstop;
+    ImageButton btnPlay,btnStop;
     Boolean flag = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        btnplay = findViewById(R.id.imageButton);
-        btnstop = findViewById(R.id.imageButton2);
-// Xử lý click
-        btnplay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//Khai báo Intent công khai để khởi động Service
-                Intent intent1 = new Intent(MainActivity.this,
-                        MyService.class);
-                startService(intent1);
-                if (flag == true)
-                {
-                    btnplay.setImageResource(R.drawable.baseline_pause_circle_24);
-                    flag = false;
-                }
-                else
-                {
-                    btnplay.setImageResource(R.drawable.baseline_play_circle_24);
-                    flag = true;
-                }
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+        btnPlay = findViewById(R.id.imageButton);
+        btnStop = findViewById(R.id.imageButton2);
+        btnPlay.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MyService.class);
+            startService(intent);
+            if(!flag) {
+                btnPlay.setImageResource(R.drawable.baseline_pause_circle_24);
+                flag = true;
+            }else {
+                btnPlay.setImageResource(R.drawable.baseline_play_circle_24);
+                flag = false;
             }
         });
-        btnstop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent2 = new
-                        Intent(MainActivity.this,MyService.class);
-                stopService(intent2);
-                btnplay.setImageResource(R.drawable.baseline_play_circle_24);
-                flag = true;
-            }
+        btnStop.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MyService.class);
+            stopService(intent);
+            btnPlay.setImageResource(R.drawable.baseline_play_circle_24);
+            flag = false;
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Confirm Exit");
+            builder.setMessage("Are you sure you want to exit?");
+            builder.setNegativeButton("Cancel", (dialog, which) -> {
+                dialog.dismiss();
+            });
+            builder.setPositiveButton("Exit", (dialog, which) -> {
+                finish();
+            });
+            builder.show();
+
+//            finish();
         });
     }
 }
