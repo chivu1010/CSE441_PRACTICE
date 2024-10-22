@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, CallPhoneActivity.class));
         });
         button2.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, CallPhoneActivity.class));
+            startActivity(new Intent(MainActivity.this, SendSMSActivity.class));
         });
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
