@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nhập A:"
+        android:textSize="18sp"
+        android:textColor="#009688" />
+
+    <EditText
+        android:id="@+id/edtAA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nhập B:"
+        android:textSize="18sp"
+        android:textColor="#009688" />
+
+    <EditText
+        android:id="@+id/edtBB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kết quả:"
+        android:textSize="18sp"
+        android:textColor="#FF5722" />
+
+    <EditText
+        android:id="@+id/txtKetqua"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false" />
+
+    <Button
+        android:id="@+id/btnRequestResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Yêu cầu Kết quả"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#6200EA" />
+</LinearLayout>

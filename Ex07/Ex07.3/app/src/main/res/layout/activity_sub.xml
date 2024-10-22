@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nhận A:"
+        android:textSize="18sp"
+        android:textColor="#FF1744" />
+
+    <EditText
+        android:id="@+id/edtAA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:enabled="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nhận B:"
+        android:textSize="18sp"
+        android:textColor="#FF1744" />
+
+    <EditText
+        android:id="@+id/edtBB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:enabled="false" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <Button
+            android:id="@+id/btnsendtong"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Trả về Tổng"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#6200EA" />
+
+        <Button
+            android:id="@+id/btnsendhieu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Trả về Hiệu"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#6200EA" />
+    </LinearLayout>
+</LinearLayout>
