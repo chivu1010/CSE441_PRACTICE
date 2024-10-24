@@ -65,7 +65,7 @@
 
         <Button
             android:id="@+id/btnclear"
-            android:layout_width="match_parent"
+            android:layout_width="188dp"
             android:layout_height="wrap_content"
             android:text="Clear" />
     </LinearLayout>
