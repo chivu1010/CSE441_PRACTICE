@@ -31,6 +31,9 @@ android {
     }
 }
 
+android {
+    useLibrary("org.apache.http.legacy")
+}
 dependencies {
 
     implementation(libs.appcompat)
